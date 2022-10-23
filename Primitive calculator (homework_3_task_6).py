@@ -43,6 +43,44 @@ def crt_num(x: float) -> str:
     return f"The cube root of a number: X ** (1/3) = {result}"
 
 
+def sin_num(x: float) -> str:
+    return f"The sine of a number: sin(X) = {math.sin(x)}"
+
+
+def cos_num(x: float) -> str:
+    return f"The cosine of a number: cos(X) = {math.cos(x)}"
+
+
+def tg_num(x: float) -> str:
+    return f"The tangent of a number: tg(X) = {math.tan(x)}"
+
+
+def asin_num(x: float) -> str:
+    return f"The arc-sine of a number: arcsin(X) = {math.asin(x)}"
+
+
+def acos_num(x: float) -> str:
+    return f"The arc-cosine of a number: arccos(X) = {math.acos(x)}"
+
+
+def atg_num(x: float) -> str:
+    return f"The arc-tangent of a number: arctg(X) = {math.atan(x)}"
+
+
+def log_10_num(x: float) -> str:
+    if x < 0:
+        return f"The decimal logarithm of a negative number \'X = {x}\' does not exist!"
+    else:
+        return f"The decimal logarithm of a number: log(X) = {math.log10(x)}"
+
+
+def ln_num(x: float) -> str:
+    if x < 0:
+        return f"The natural logarithm of a negative number \'X = {x}\' does not exist!"
+    else:
+        return f"The natural logarithm of the number: ln(X) = {math.log(x)}"
+
+
 marker = True
 while marker:
     print("""Select the number of the math operation: 
@@ -52,7 +90,15 @@ while marker:
 \t4. The division of two numbers (X / Y);
 \t5. The exponentiation of two numbers (X ** Y);
 \t6. The square root of a number (X ** 0.5);
-\t7. The cube root of a number (X ** (1/3))""")
+\t7. The cube root of a number (X ** (1/3));
+\t8. The sine of a number sin(X);
+\t9. The cosine of a number cos(X);
+\t10. The tangent of a number tg(X);
+\t11. The arc-sine of a number arcsin(X);
+\t12. The arc-cosine of a number arccos(X);
+\t13. The arc-tangent of a number arctg(X);
+\t14. The decimal logarithm of a number log(X);
+\t15. The natural logarithm of the number ln(X)""")
 
     try:
         operation_number = int(input('You select the math operation (sequence number): '))
@@ -65,11 +111,11 @@ while marker:
         except ValueError:
             print("Incorrectly entered data! You need to enter two numbers (integer or floating point)")
             operation_number = 0
-    elif operation_number in range(6, 8):
+    elif operation_number in range(6, 16):
         try:
             one_number = float(input('Enter a number:  X = '))
         except ValueError:
-            if operation_number == 6:
+            if operation_number in (6, 14, 15):
                 print("Incorrectly entered data! You need to enter a POSITIVE number (integer or floating point)")
             else:
                 print("Incorrectly entered data! You need to enter a number (integer or floating point)")
@@ -92,6 +138,22 @@ while marker:
             print(sqrt_num(one_number))
         case 7:
             print(crt_num(one_number))
+        case 8:
+            print(sin_num(one_number))
+        case 9:
+            print(cos_num(one_number))
+        case 10:
+            print(tg_num(one_number))
+        case 11:
+            print(asin_num(one_number))
+        case 12:
+            print(acos_num(one_number))
+        case 13:
+            print(atg_num(one_number))
+        case 14:
+            print(log_10_num(one_number))
+        case 15:
+            print(ln_num(one_number))
 
     if input('Enter \'off\' to end the program: ').lower() == 'off':
         marker = False
